@@ -17,7 +17,12 @@ SECTIONS
     __start = .;
 
     .text : {
-        *(.text*)
+        *(.text)
+                *(.text*)
+                *(.init)
+                *(.fini)
+                *(.ctors)
+                *(.dtors)
     } :text
 
     . += 0x1000;

@@ -9,6 +9,7 @@ void _kstart(struct stivale2_struct *stivale2_struct) {
 
     //? Driver initialization
     serial_init(COM1);
+    serial_write_string("Serial interface initialized.\n");
 
     //? Display driver setup
     term_str_tag = stivale2_get_tag(stivale2_struct, STIVALE2_STRUCT_TAG_TERMINAL_ID);
@@ -24,7 +25,7 @@ void _kstart(struct stivale2_struct *stivale2_struct) {
         if (init_video_driver(framebuf_str_tag->framebuffer_addr, framebuf_str_tag->framebuffer_width, framebuf_str_tag->framebuffer_height, 
                         framebuf_str_tag->framebuffer_pitch, framebuf_str_tag->framebuffer_bpp, framebuf_str_tag->red_mask_size, framebuf_str_tag->green_mask_size, 
                         framebuf_str_tag->blue_mask_size, framebuf_str_tag->red_mask_shift, framebuf_str_tag->green_mask_shift, framebuf_str_tag->blue_mask_shift))
-            serial_write_string("video driver initialized.");
+            serial_write_string("video driver initialized.\n");
     
     } else if (checker_result == CHECKER_TERMINAL_AVAILABLE) {
         void *term_write_ptr = (void *)term_str_tag->term_write;
